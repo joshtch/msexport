@@ -43,8 +43,8 @@ See [example section](#example) for an illustration.
 ### MuseScore version / MuseScore 4 limitations
 This script is currently used mainly in conjunction with MuseScore 3. With latest version of this script, it can also be used with a MuseScore 4 executable, but with some limitations:
 - MuseScore 4 PDF export does not yet work in the same way as with MuseScore 3:
-  - It will only generate a single PDF with all instruments, whereas MuseScore 3 additionally added excerpts for every instrument/voice. ([GitHub issue](https://github.com/musescore/MuseScore/issues/24532))
-  - If a score is using "continuous view", exported PDF will have a very long page (instead of being split up into separate pages according to the configured page size)  ([GitHub issue](https://github.com/musescore/MuseScore/issues/22887))
+  - It will only generate a single PDF with all instruments, whereas MuseScore 3 additionally added excerpts for every instrument/voice. ([GitHub issue](https://github.com/musescore/MuseScore/issues/22887))
+  - If a score is using "continuous view", exported PDF will have a very long page (instead of being split up into separate pages according to the configured page size)  ([GitHub issue](https://github.com/musescore/MuseScore/issues/24532))
 - Modification of instruments does not work currently with MuseScore 4 files, it will always export the instruments declared in the score.
 
 (There are GitHub items for the PDF issues, but as they got assigned P3 / "Prio: low" it may take some time to get them fixed, if at all.)
