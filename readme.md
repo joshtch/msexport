@@ -1,3 +1,7 @@
+Note: this is a fork with my personal configuration and settings. The primary difference is
+this version only exports one .mp3 file per voice, using the instruments configured in the
+i_config.php file.
+
 # msexport
 
 **Generates mp3 parts from existing [MuseScore](https://www.musescore.org) score file.**

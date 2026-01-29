@@ -314,19 +314,8 @@ abstract class CAbstractMuseScoreExport {
                 // ----------------------------------
                 $this->setInstruments(aVOICE);
 
-                $this->setVolume($i, 100, 50, 100);
-                $this->prepareExport('-' . $cLongname);
-
-                $this->setVolume($i, 0, 100, 100);
-                $this->prepareExport('-' . $cLongname . ' (Karaoke)');
-
-                $this->setVolume($i, 100, 0, 100);
-                $this->prepareExport('-' . $cLongname . ' (Solo)');
-
-                // ----------------------------------
-                $this->setInstruments(aPIANO);
-                $this->setVolume($i, 100, 50, 50);
-                $this->prepareExport('-' . $cLongname . ' (Piano)');
+                $this->setVolume($i, 100, 20, 10);
+                $this->prepareExport('-' . str_replace(' ', '_', $cLongname));
             }
             else {
                 echo 'skipping instrument ' . $cLongname . "\r\n";
@@ -337,21 +326,8 @@ abstract class CAbstractMuseScoreExport {
         // all voices
         // ----------------------------------
         $this->setInstruments(aVOICE);
-        $this->setVolume(-1, 100, 100, 100);
-        $this->prepareExport('-Alle');
-
-        $this->setInstruments(aPIANO);
-        $this->setVolume(-1, 100, 100, 100);
-        $this->prepareExport('-Alle (Piano)');
-
-        // ----------------------------------
-        // PDF version
-        // ----------------------------------
-        $this->aTasks[] = array(
-            $this->aFN['filename'] . '.pdf',
-            $GLOBALS['cMuseScore'] . ' --export-score-parts -o "' . cEXPORTDIR . DIRECTORY_SEPARATOR . $this->aFN['filename'] . '.pdf' . '" "' . $cFilename . '"',
-            ''
-        );
+        $this->setVolume(-1, 100, 100, 25);
+        $this->prepareExport('-Tutti');
 
         unlink($cTempFilename);
     }

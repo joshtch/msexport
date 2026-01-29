@@ -5,4 +5,4 @@ temp/
 .idea/
 
 # configuration file with individual settings
-i_config.php
+#i_config.php
