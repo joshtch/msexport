@@ -80,9 +80,41 @@ Calling `php msexport.php /data/CanYouFeelTheLoveTonight.mscz` will generate the
 - CanYouFeelTheLoveTonight-Tenor (Piano).mp3
 - CanYouFeelTheLoveTonight-Tenor (Solo).mp3
 
-All those files are generated with a single call to `msexport.php`. Depending on your computers speed and the `bUSE_SINGLE_THREADED` setting this will take less than one minute  in total.
+All those files are generated with a single call to `msexport.php`. Depending on your computers speed and the `bUSE_SINGLE_THREADED` setting this will take less than one minute in total.
 
 Note: There will be no file generated for the `Piano` instrument, as `msexport.php` only generates extracts for voices. But the `Piano` instrument will be included in the generated parts.
+
+## Setup instructions for PHP
+
+Setting up a compatible version of PHP to run `msexport` can be a major pain.
+Let [`phpbrew`](https://github.com/phpbrew/phpbrew) spare you some of
+the hassle without messing with your system PHP.
+
+Tested and working on macOS using [Homebrew](https://brew.sh/). Refer to the `phpbrew`
+[documentation](https://github.com/phpbrew/phpbrew/wiki/Requirement) and adapt as needed for
+your \*nix version.
+
+1. Install [`phpbrew`](https://github.com/phpbrew/phpbrew)
+
+```sh
+$ brew update
+$ brew install autoconf pkg-config bzip2 zlib openssl@3 oniguruma readline libzip libxml2 php phpbrew
+$ phpbrew lookup-prefix homebrew
+```
+
+2. Use `phpbrew` to install the correct PHP variant.
+
+```sh
+$ phpbrew install -j $(nproc) 8.3 +default +mbstring +zts
+$ phpbrew clean 8.3
+$ phpbrew use 8.3
+```
+
+3. (Optional) Add `parallel` support.
+
+```sh
+$ phpbrew ext install parallel
+```
 
 ## Releases
 
