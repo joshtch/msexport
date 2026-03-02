@@ -19,33 +19,44 @@ $bUseSingleThreaded = true;
  * @var $cWorkDir
  * folder for temporary files (full path without ending slash/backslash)
  */
+// __DIR__ is the location of msexport.php. This folder must exist before you run msexport.php!
 $cWorkDir = __DIR__ . DIRECTORY_SEPARATOR . 'temp';
+// Suggested setting on macOS
+//$cWorkDir = '/tmp';
 
 /**
  * @var $cExportDir
  * target folder for created files (mp3/pdf) (full path without ending slash/backslash)
  */
-$cExportDir = 'c:/temp/musescore';
+$cExportDir = '.';
 
 /**
  * @var $cMuseScore
  * full path to MuseScore executable file
  */
 $cMuseScore = '"c:/program files/musescore 3/bin/musescore3.exe"';
+// On macOS, if MuseScore was installed with Homebrew:
+//$cMuseScore = '"/opt/homebrew/bin/mscore" 2>/dev/null';
 
 /**
  * @var $acVoices
  * name prefixes which should declare a part as being a "voice" instrument
  */
-$acVoices = ['solo', 'soprano', 'alto', 'tenor', 'bass'];
+$acVoices = ['soprano', 'alto', 'tenor', 'bass'];
 
 /**
  * @var $aVoice
  * @var $aPiano
- * Translations (bank, instrument)
+ * instrument for the primary voice and other voices, respectively
+ * Translations: [soundfile number, instrument number]
  */
-$aVoice = [1, 52]; // 52 = Choir Aah in MuseScore default Soundfile
-$aPiano = [1, 0];  //  0 = Grand Piano in MuseScore default Soundfile
+// [1, 57] = Clarinet in MuseScore default Soundfile
+// [1, 52] = Choir Aah
+// [1, 2] = Bright Grand Piano
+$aVoice = [1, 2];
+// [1, 0] = Grand Piano
+// [1, 1] = Mellow Grand Piano
+$aPiano = [1, 1];
 
 /**
  * @var $iMaxThreads
