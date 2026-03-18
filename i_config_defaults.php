@@ -59,6 +59,16 @@ $aVoice = [1, 2];
 $aPiano = [1, 1];
 
 /**
+ * @var $cOutputExt
+ * extension prefix to use
+ * Options: wav, mp3, ogg, flac
+ * See the following resources:
+ *  MuseScore 3: https://handbook.musescore.org/3/advanced-topics/file-formats#audio-files-export-only
+ *  MuseScore Studio: https://handbook.musescore.org/file-management/file-export#audio-formats
+ */
+$cOutputExt = 'mp3';
+
+/**
  * @var $iMaxThreads
  * number of max allowed parallel threads (multithreaded version only)
  */

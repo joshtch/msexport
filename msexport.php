@@ -1,7 +1,7 @@
 <?php
 
 /**
- * msexport.php: Export parts of MuseScore file as mp3 file (in different variations)
+ * msexport.php: Export parts of MuseScore file as audio file (in different variations)
  *
  * (c) 2020-2025 moving-bits (https://github.com/moving-bits)
  * Distributed under Apache 2.0 license
@@ -39,7 +39,7 @@
 
 const MSEXPORT_VERSION = '1.3';
 const MSEXPORT_DATE = '2025-04';
-echo "\nmsexport v" . MSEXPORT_VERSION . " - export MuseScore score as mp3 parts (and more)\n(c) " . MSEXPORT_DATE . " moving-bits (https://github.com/moving-bits/)\nDistributed under Apache 2.0 license\n\n\r\n";
+echo "\nmsexport v" . MSEXPORT_VERSION . " - export MuseScore score as voice parts (and more)\n(c) " . MSEXPORT_DATE . " moving-bits (https://github.com/moving-bits/)\nDistributed under Apache 2.0 license\n\n\r\n";
 
 if (!extension_loaded('mbstring')) {
     echo "Missing mbstring extension\r\n";
@@ -56,6 +56,7 @@ define('cEXPORTDIR', $cExportDir);
 define('acVOICES', $acVoices);
 define('aVOICE', $aVoice);
 define('aPIANO', $aPiano);
+define('cOUTPUTEXT', $cOutputExt);
 define('MAX_THREADS', $iMaxThreads);
 
 $bParallelExists = class_exists("\parallel\Runtime");
@@ -73,7 +74,7 @@ const MS_CTRLIDX_BANK = 32;
 
 /**
  * CMuseScoreExportBase - base class for MuseScore part exports
- * (exporting every voice as separate .mp3 file + variations + PDF version)
+ * (exporting every voice as separate audio file + variations + PDF version)
  * cannot be called directly, use either single or multithreaded version
  */
 abstract class CAbstractMuseScoreExport {
@@ -198,7 +199,7 @@ abstract class CAbstractMuseScoreExport {
         // remember parameters for actual program call
         $this->aTasks[] = array(
             $cAddFn,
-            $GLOBALS['cMuseScore'] . ' -o "' . cEXPORTDIR . DIRECTORY_SEPARATOR . $this->aFN['filename'] . $cAddFn . '.mp3' . '" "' . $cNewFN . '"',
+            $GLOBALS['cMuseScore'] . ' -o "' . cEXPORTDIR . DIRECTORY_SEPARATOR . $this->aFN['filename'] . $cAddFn . '.' . cOUTPUTEXT . '" "' . $cNewFN . '"',
             $cNewFN
         );
     }
