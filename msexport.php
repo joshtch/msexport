@@ -226,10 +226,11 @@ abstract class CAbstractMuseScoreExport {
 
         // -----------------------------------------------------------------------------
         // copy MuseScore file to export folder
-        copy($cFilename, cEXPORTDIR . DIRECTORY_SEPARATOR . $this->aFN['filename'] . '.' . $this->aFN['extension']);
+        $cTempFilename = cEXPORTDIR . DIRECTORY_SEPARATOR . $this->aFN['filename'] . '.' . $this->aFN['extension'];
+        copy($cFilename, $cTempFilename);
 
         // open MuseScore file (=ZIP-format)
-        $hMS = $this->open_musescore($cFilename);
+        $hMS = $this->open_musescore($cTempFilename);
 
         // look for pointer to main file
         $hMeta = $hMS->getFromName('META-INF/container.xml');
@@ -352,6 +353,7 @@ abstract class CAbstractMuseScoreExport {
             ''
         );
 
+        unlink($cTempFilename);
     }
 }
 
